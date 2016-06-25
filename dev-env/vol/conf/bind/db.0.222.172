@@ -1,0 +1,22 @@
+;
+; BIND reverse data file for broadcast zone
+;
+$TTL	604800
+@	IN	SOA	handy.dev. root.handy.dev. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	handy.dev.
+10	IN	PTR	ns.handy.dev.
+11	IN	PTR	zoo1.handy.dev.
+12	IN	PTR	zoo2.handy.dev.
+13	IN	PTR	zoo3.handy.dev.
+20	IN	PTR	monitor-simple.handy.dev.
+21	IN	PTR	dubbo-admin.handy.dev.
+30	IN	PTR	demo-provider.handy.dev.
+40	IN	PTR	demo-consumer.handy.dev.
+101	IN	PTR	mongo.handy.dev.
+102	IN	PTR	redis.handy.dev.

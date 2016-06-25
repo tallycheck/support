@@ -1,0 +1,17 @@
+deploy under domain : handy.dev
+
+subnet: 172.222.0.0/24
+gateway: 172.222.0.1
+
+ns.handy.dev : 172.222.0.10
+zoo1.handy.dev : 172.222.0.11
+zoo2.handy.dev : 172.222.0.12
+zoo3.handy.dev : 172.222.0.13
+
+
+
+Run standalone zookeeper:
+docker-compose -f docker-compose-standalone.yml up
+
+Run cluster zookeeper:
+docker-compose up

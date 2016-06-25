@@ -1,0 +1,128 @@
+version: '2'
+
+services:
+  nameserver:
+    image: ventz/bind
+    container_name: nameserver
+    hostname: ns.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.10
+    dns: 172.222.0.10
+    volumes : 
+     - ./vol/conf/bind:/etc/bind:ro
+     - ./vol/data/bind/var/cache/bind:/var/cache/bind
+     - ./vol/data/bind/var/log/named:/var/log/named
+
+  mongo:
+    image: mongo:3.2.6
+    container_name: mongo
+    hostname: mongo.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.101
+    dns: 172.222.0.10
+
+  redis:
+    image: redis:3.2.1
+    container_name: redis
+    hostname: redis.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.102
+    dns: 172.222.0.10
+
+  zookeeper1:
+    image: jplock/zookeeper:3.4.8
+    container_name: zoo1
+    hostname: zoo1.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.11
+    dns: 172.222.0.10
+    volumes : 
+     - ./vol/conf/zk-cluster:/opt/zookeeper/conf:ro
+     - ./vol/data/zk-cluster/zoo1:/tmp/zookeeper
+
+  zookeeper2:
+    image: jplock/zookeeper:3.4.8
+    container_name: zoo2
+    hostname: zoo2.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.12
+    dns: 172.222.0.10
+    volumes : 
+     - ./vol/conf/zk-cluster:/opt/zookeeper/conf:ro
+     - ./vol/data/zk-cluster/zoo2:/tmp/zookeeper
+
+  zookeeper3:
+    image: jplock/zookeeper:3.4.8
+    container_name: zoo3
+    hostname: zoo3.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.13
+    dns: 172.222.0.10
+    volumes : 
+     - ./vol/conf/zk-cluster:/opt/zookeeper/conf:ro
+     - ./vol/data/zk-cluster/zoo3:/tmp/zookeeper
+
+  monitorsimple:
+    image: altiplanogao/dubbo-monitor-simple
+    container_name: monitor-simple
+    hostname: monitor-simple.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.20
+    dns: 172.222.0.10
+    ports:
+     - "9000:8080"
+    volumes : 
+     - ./vol/conf/dubbo/monitor-simple:/dubbo/monitor-simple/conf
+
+  admin:
+    image: altiplanogao/dubbo-admin
+    container_name: dubbo-admin
+    hostname: dubbo-admin.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.21
+    dns: 172.222.0.10
+    ports:
+     - "9001:8080"
+    volumes : 
+     - ./vol/conf/dubbo/dubbo-admin/dubbo.properties:/dubbo/dubbo-admin/WEB-INF/dubbo.properties
+
+  demoprovider:
+    image: altiplanogao/dubbo-demo-provider
+    container_name: demo-provider
+    hostname: demo-provider.handy.dev
+    networks:
+      dubbo_net:
+       ipv4_address: 172.222.0.30
+    dns: 172.222.0.10
+    volumes : 
+     - ./vol/conf/dubbo/demo-provider:/dubbo/demo-provider/conf
+  
+  democonsumer:
+    image: altiplanogao/dubbo-demo-consumer
+    container_name: demo-consumer
+    hostname: demo-consumer.handy.dev
+    networks:
+      dubbo_net:
+       ipv4_address: 172.222.0.40
+    dns: 172.222.0.10
+    volumes : 
+     - ./vol/conf/dubbo/demo-consumer:/dubbo/demo-consumer/conf
+
+
+networks:
+  dubbo_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.222.0.0/24
+        gateway: 172.222.0.1
+

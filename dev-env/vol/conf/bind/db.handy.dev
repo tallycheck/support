@@ -1,0 +1,24 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	handy.dev. root.handy.dev. (
+			      3		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	ns.handy.dev.
+@	IN	A	172.222.0.10
+ns	IN	A	172.222.0.10
+zoo1	IN	A	172.222.0.11
+zoo2	IN	A	172.222.0.12
+zoo3	IN	A	172.222.0.13
+monitor-simple	IN	A	172.222.0.20
+dubbo-admin	IN	A	172.222.0.21
+demo-provider	IN	A	172.222.0.30
+demo-consumer	IN	A	172.222.0.40
+mongo	IN	A	172.222.0.101
+redis	IN	A	172.222.0.102
+
