@@ -22,6 +22,19 @@ services:
       dubbo_net:
         ipv4_address: 172.222.0.101
     dns: 172.222.0.10
+    ports:
+     - "9017:27017"
+
+  mongoclient:
+    image: mongoclient/mongoclient
+    container_name: mongoclient
+    hostname: mongoclient.handy.dev
+    networks:
+      dubbo_net:
+        ipv4_address: 172.222.0.102
+    dns: 172.222.0.10
+    ports:
+     - "3000:3000"
 
   redis:
     image: redis:3.2.1
@@ -29,7 +42,7 @@ services:
     hostname: redis.handy.dev
     networks:
       dubbo_net:
-        ipv4_address: 172.222.0.102
+        ipv4_address: 172.222.0.103
     dns: 172.222.0.10
 
   zookeeper1:
@@ -43,6 +56,8 @@ services:
     volumes : 
      - ./vol/conf/zk-cluster:/opt/zookeeper/conf:ro
      - ./vol/data/zk-cluster/zoo1:/tmp/zookeeper
+    ports:
+     - "9181:2181"
 
   zookeeper2:
     image: jplock/zookeeper:3.4.8

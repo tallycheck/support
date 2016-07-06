@@ -1,13 +1,13 @@
 $ORIGIN .
 $TTL 0	; 0 seconds
 @			IN SOA	. . (
-				60         ; serial
+				83         ; serial
 				0          ; refresh (0 seconds)
 				0          ; retry (0 seconds)
 				0          ; expire (0 seconds)
 				0          ; minimum (0 seconds)
 				)
-			KEYDATA	20160626041807 20160519142012 19700101000000 257 3 8 (
+			KEYDATA	20160707132731 20160519142012 19700101000000 257 3 8 (
 				AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQ
 				bSEW0O8gcCjFFVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh
 				/RStIoO8g0NfnfL2MTJRkxoXbfDaUeVPQuYEhg37NZWA
@@ -17,5 +17,5 @@ $TTL 0	; 0 seconds
 				Yl7OyQdXfZ57relSQageu+ipAdTTJ25AsRTAoub8ONGc
 				LmqrAmRLKBP1dfwhYB4N7knNnulqQxA+Uk1ihz0=
 				) ; KSK; alg = RSASHA256; key id = 19036
-				; next refresh: Sun, 26 Jun 2016 04:18:07 GMT
+				; next refresh: Thu, 07 Jul 2016 13:27:31 GMT
 				; trusted since: Thu, 19 May 2016 14:20:12 GMT

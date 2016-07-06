@@ -20,5 +20,6 @@ dubbo-admin	IN	A	172.222.0.21
 demo-provider	IN	A	172.222.0.30
 demo-consumer	IN	A	172.222.0.40
 mongo	IN	A	172.222.0.101
-redis	IN	A	172.222.0.102
+mongoclient	IN	A	172.222.0.102
+redis	IN	A	172.222.0.103
 

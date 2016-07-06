@@ -19,4 +19,5 @@ $TTL	604800
 30	IN	PTR	demo-provider.handy.dev.
 40	IN	PTR	demo-consumer.handy.dev.
 101	IN	PTR	mongo.handy.dev.
-102	IN	PTR	redis.handy.dev.
+102	IN	PTR	mongoclient.handy.dev.
+103	IN	PTR	redis.handy.dev.
